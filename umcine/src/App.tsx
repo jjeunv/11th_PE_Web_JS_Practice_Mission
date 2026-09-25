@@ -1,31 +1,30 @@
-import MovieCard from "./components/MovieCard";
-
-function Header() {
-  return <header>헤더</header>;
+interface Movie {
+  id: number;
+  title: string;
+  releaseDate: string;
 }
+
+const movies: Movie[] = [
+  { id: 1, title: "오디세이", releaseDate: "2026.08.05" },
+  { id: 2, title: "토이 스토리 5", releaseDate: "2026.06.17" },
+  { id: 3, title: "타짜: 벨제붑의 노래", releaseDate: "2026.09.23" },
+];
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <h1>영화 목록</h1>
-        <MovieCard
-          title="오디세이"
-          releaseDate="2026.08.05"
-          isBookmarked={true}
-        />
-        <MovieCard
-          title="토이 스토리 5"
-          releaseDate="2026.06.17"
-          isBookmarked={false}
-        />
-        <MovieCard
-          title="타짜: 벨제붑의 노래"
-          releaseDate="2026.09.23"
-          isBookmarked={false}
-        />
-      </main>
-    </>
+    <main>
+      <h1>영화 목록</h1>
+      {movies.length === 0 ? (
+        <p>표시할 영화가 없어요.</p>
+      ) : (
+        <ul>
+          {movies.map((movie) => (
+            <li key={movie.id}>
+              {movie.title} - {movie.releaseDate}
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
   );
 }
