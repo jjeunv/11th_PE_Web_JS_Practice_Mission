@@ -1,27 +1,7 @@
+import MovieCard from "./components/MovieCard";
+
 function Header() {
   return <header>헤더</header>;
-}
-
-function MovieTitle() {
-  return <h2>오디세이</h2>;
-}
-
-function MovieCard() {
-  return (
-    <article>
-      <MovieTitle />
-      <p>2026.08.05</p>
-    </article>
-  );
-}
-
-function MovieList() {
-  return (
-    <>
-      <MovieCard />
-      <MovieCard />
-    </>
-  );
 }
 
 export default function App() {
@@ -30,16 +10,22 @@ export default function App() {
       <Header />
       <main>
         <h1>영화 목록</h1>
-        <MovieList />
+        <MovieCard
+          title="오디세이"
+          releaseDate="2026.08.05"
+          isBookmarked={true}
+        />
+        <MovieCard
+          title="토이 스토리 5"
+          releaseDate="2026.06.17"
+          isBookmarked={false}
+        />
+        <MovieCard
+          title="타짜: 벨제붑의 노래"
+          releaseDate="2026.09.23"
+          isBookmarked={false}
+        />
       </main>
     </>
   );
 }
-
-/*
-App
-├─ Header
-└─ MovieList
-    ├─ MovieCard
-    └─ MovieCard
-*/
