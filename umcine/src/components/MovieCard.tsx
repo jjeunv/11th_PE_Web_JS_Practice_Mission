@@ -1,15 +1,20 @@
+import type { Movie } from "../App";
+
 interface MovieCardProps {
-  title: string;
-  releaseDate: string;
-  isBookmarked: boolean;
+  movie: Movie;
+  onToggleBookmark: (movieId: number) => void;
 }
 
-const MovieCard = ({ title, releaseDate, isBookmarked }: MovieCardProps) => {
+const MovieCard = ({ movie, onToggleBookmark }: MovieCardProps) => {
   return (
     <article>
-      <h2>{title}</h2>
-      <p>{releaseDate}</p>
-      <p>{isBookmarked ? "북마크됨" : "북마크 안 됨"}</p>
+      <span>{movie.title}</span>
+      <button
+        aria-pressed={movie.isBookmarked}
+        onClick={() => onToggleBookmark(movie.id)}
+      >
+        {movie.isBookmarked ? "북마크 해제" : "북마크 추가"}
+      </button>
     </article>
   );
 };
