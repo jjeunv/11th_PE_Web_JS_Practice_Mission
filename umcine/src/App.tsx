@@ -1,13 +1,45 @@
-export default function App() {
-  const movieTitle = "오디세이";
-  const genre = "모험";
-  const releaseDate = "2026.08.05";
+function Header() {
+  return <header>헤더</header>;
+}
 
+function MovieTitle() {
+  return <h2>오디세이</h2>;
+}
+
+function MovieCard() {
   return (
-    <article className="movie-card">
-      <h1>{movieTitle}</h1>
-      <p>장르: {genre}</p>
-      <p>개봉일: {releaseDate}</p>
+    <article>
+      <MovieTitle />
+      <p>2026.08.05</p>
     </article>
   );
 }
+
+function MovieList() {
+  return (
+    <>
+      <MovieCard />
+      <MovieCard />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <Header />
+      <main>
+        <h1>영화 목록</h1>
+        <MovieList />
+      </main>
+    </>
+  );
+}
+
+/*
+App
+├─ Header
+└─ MovieList
+    ├─ MovieCard
+    └─ MovieCard
+*/
