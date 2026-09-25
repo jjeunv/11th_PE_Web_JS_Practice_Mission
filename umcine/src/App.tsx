@@ -1,7 +1,13 @@
-import "./App.css";
+export default function App() {
+  const movieTitle = "오디세이";
+  const genre = "모험";
+  const releaseDate = "2026.08.05";
 
-function App() {
-  return <h1>kasa의 React 학습</h1>;
+  return (
+    <article className="movie-card">
+      <h1>{movieTitle}</h1>
+      <p>장르: {genre}</p>
+      <p>개봉일: {releaseDate}</p>
+    </article>
+  );
 }
-
-export default App;
