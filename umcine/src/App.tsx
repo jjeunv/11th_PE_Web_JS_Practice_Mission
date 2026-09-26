@@ -1,26 +1,29 @@
-import { createContext, useContext, useState } from "react";
+import { useState } from "react";
+import Footer from "./components/footer/footer";
+import Header from "./components/header/header";
+import MovieGrid from "./components/movie-grid/movie-grid";
+import { movies as initialMovies } from "./data/movie";
 
-type StudyMode = "focus" | "break";
+const App = () => {
+  const [movies, setMovies] = useState(initialMovies);
 
-const StudyModeContext = createContext<StudyMode>("focus");
-
-function StudyModeStatus() {
-  const mode = useContext(StudyModeContext);
-
-  return <p>현재 모드: {mode}</p>;
-}
-
-export default function App() {
-  const [mode, setMode] = useState<StudyMode>("focus");
-
-  function handleToggleMode() {
-    setMode((currentMode) => (currentMode === "focus" ? "break" : "focus"));
-  }
+  const handleToggleBookmark = (movieId: number) => {
+    setMovies((prevMovies) =>
+      prevMovies.map((movie) =>
+        movie.id === movieId
+          ? { ...movie, isBookmarked: !movie.isBookmarked }
+          : movie,
+      ),
+    );
+  };
 
   return (
-    <StudyModeContext value={mode}>
-      <StudyModeStatus />
-      <button onClick={handleToggleMode}>모드 바꾸기</button>
-    </StudyModeContext>
+    <>
+      <Header />
+      <MovieGrid movies={movies} onToggleBookmark={handleToggleBookmark} />
+      <Footer />
+    </>
   );
-}
+};
+
+export default App;

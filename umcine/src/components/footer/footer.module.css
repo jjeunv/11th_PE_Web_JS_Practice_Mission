@@ -1,0 +1,27 @@
+.footer {
+  height: 57px;
+  padding: 16px 80px;
+  background-color: rgba(255, 255, 255, 1);
+  border-top: 1px solid rgba(227, 230, 235, 1);
+
+  display: flex;
+  justify-content: end;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.logo {
+  height: 14px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(96, 103, 116, 1);
+  margin: 0;
+}
