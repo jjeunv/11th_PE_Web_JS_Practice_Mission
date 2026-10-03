@@ -1,10 +1,20 @@
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI",
-    Roboto, "Malgun Gothic", sans-serif;
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    font-family:
+      "Pretendard Variable",
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Apple SD Gothic Neo",
+      "Segoe UI",
+      Roboto,
+      "Malgun Gothic",
+      sans-serif;
+  }
 }

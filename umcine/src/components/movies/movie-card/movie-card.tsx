@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Movie } from "../../../types/movie";
-import styles from "./movie-card.module.css";
+import { cn } from "../../../utils/cn";
 
 interface MovieCardProps {
   movie: Movie;
@@ -10,21 +10,25 @@ interface MovieCardProps {
 const MovieCard = ({ movie, onToggleBookmark }: MovieCardProps) => {
   return (
     <Link to="/movies/$movieId" params={{ movieId: String(movie.id) }}>
-      <article className={styles.card}>
-        <div className={styles.posterWrapper}>
+      <article className="flex flex-col gap-1">
+        <div className="relative">
           <img
             src={movie.posterPath}
             alt={movie.title}
-            className={styles.poster}
+            className="w-full object-cover rounded-[10px] aspect-[241.6/274]"
           />
           <button
             type="button"
-            className={`${styles.bookmarkBadge} ${
-              movie.isBookmarked ? styles.bookmarked : ""
-            }`}
+            className={cn(
+              "absolute top-2.5 right-[9.8px] w-8.5 h-8.5 bg-[#17191e] flex justify-center items-center rounded-lg p-1 border border-[#ffffff] cursor-pointer",
+              movie.isBookmarked && "bg-[#2563eb] border-[#2563eb]",
+            )}
             aria-pressed={movie.isBookmarked}
             aria-label={movie.isBookmarked ? "북마크 해제" : "북마크 추가"}
-            onClick={() => onToggleBookmark(movie.id)}
+            onClick={(e) => {
+              e.preventDefault();
+              onToggleBookmark(movie.id);
+            }}
           >
             <img
               src={
@@ -33,12 +37,16 @@ const MovieCard = ({ movie, onToggleBookmark }: MovieCardProps) => {
                   : "/icons/bookmark-outline.svg"
               }
               alt=""
-              className={styles.bookmarkIcon}
+              className="brightness-0 invert w-6"
             />
           </button>
         </div>
-        <span className={styles.title}>{movie.title}</span>
-        <span className={styles.date}>{movie.releaseDate}</span>
+        <span className="mt-1.25 text-[#17191e] text-[14px] font-extrabold">
+          {movie.title}
+        </span>
+        <span className="text-[12px] text-[#969da8] font-normal">
+          {movie.releaseDate}
+        </span>
       </article>
     </Link>
   );
