@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Footer from "./components/layout/footer/footer";
-import Header from "./components/layout/header/header";
+import Footer from "./components/layout/footer";
+import Header from "./components/layout/header";
 import { movies as initialMovies } from "./data/movie";
-import MovieGrid from "./components/movies/movie-grid/movie-grid";
+import MovieGrid from "./components/movies/movie-grid";
 
 const App = () => {
   const [movies, setMovies] = useState(initialMovies);

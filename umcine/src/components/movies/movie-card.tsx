@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import type { Movie } from "../../../types/movie";
-import { cn } from "../../../utils/cn";
+import type { Movie } from "../../types/movie";
+import { cn } from "../../utils/cn";
+import { BookmarkIcon, BookmarkOutlineIcon } from "../../assets";
 
 interface MovieCardProps {
   movie: Movie;
@@ -20,8 +21,8 @@ const MovieCard = ({ movie, onToggleBookmark }: MovieCardProps) => {
           <button
             type="button"
             className={cn(
-              "absolute top-2.5 right-[9.8px] w-8.5 h-8.5 bg-[#17191e] flex justify-center items-center rounded-lg p-1 border border-[#ffffff] cursor-pointer",
-              movie.isBookmarked && "bg-[#2563eb] border-[#2563eb]",
+              "absolute top-2.5 right-[9.8px] w-8.5 h-8.5 bg-primary flex justify-center items-center rounded-lg p-1 border border-surface cursor-pointer",
+              movie.isBookmarked && "bg-action border-action",
             )}
             aria-pressed={movie.isBookmarked}
             aria-label={movie.isBookmarked ? "북마크 해제" : "북마크 추가"}
@@ -30,21 +31,17 @@ const MovieCard = ({ movie, onToggleBookmark }: MovieCardProps) => {
               onToggleBookmark(movie.id);
             }}
           >
-            <img
-              src={
-                movie.isBookmarked
-                  ? "/icons/bookmark.svg"
-                  : "/icons/bookmark-outline.svg"
-              }
-              alt=""
-              className="brightness-0 invert w-6"
-            />
+            {movie.isBookmarked ? (
+              <BookmarkIcon className="w-6 text-white" />
+            ) : (
+              <BookmarkOutlineIcon className="w-6 text-white" />
+            )}
           </button>
         </div>
-        <span className="mt-1.25 text-[#17191e] text-[14px] font-extrabold">
+        <span className="mt-1.25 text-primary text-[14px] font-extrabold">
           {movie.title}
         </span>
-        <span className="text-[12px] text-[#969da8] font-normal">
+        <span className="text-[12px] text-tertiary font-normal">
           {movie.releaseDate}
         </span>
       </article>

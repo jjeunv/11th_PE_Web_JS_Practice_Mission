@@ -1,15 +1,13 @@
-import styles from "./footer.module.css";
-
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.content}>
+    <footer className="h-14.25 px-20 bg-white border-t border-t-line flex justify-end">
+      <div className="flex items-center justify-between gap-2">
         <img
           src="/images/logos/tmdb-logo.svg"
           alt="TMDB 로고"
-          className={styles.logo}
+          className="h-2"
         />
-        <p className={styles.text}>
+        <p className="font-normal text-[12px] text-secondary ">
           This product uses the TMDB API but is not endorsed or certified by
           TMDB.
         </p>

@@ -1,30 +1,35 @@
 import { useState } from "react";
-import styles from "./pagination.module.css";
+import { cn } from "../../utils/cn";
+import { ChevronLeftIcon, ChevronRightIcon } from "../../assets";
 
+// TODO: 상수 교체
 const PAGE_NUMBERS = [1, 2, 3, 4, 5];
 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <nav className={styles.pagination}>
+    <nav className="flex items-center justify-center gap-3">
       <button
         type="button"
-        className={styles.arrowButton}
         aria-label="이전 페이지"
+        className="cursor-pointer"
         onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
       >
-        <img src="/icons/chevron-left.svg" alt="이전 페이지" />
+        <ChevronLeftIcon
+          className={cn(currentPage === 1 ? "text-disabled" : "text-secondary")}
+        />
       </button>
 
-      <div className={styles.pageNumbers}>
+      <div className="flex items-center gap-1">
         {PAGE_NUMBERS.map((page) => (
           <button
             key={page}
             type="button"
-            className={`${styles.pageButton} ${
-              page === currentPage ? styles.active : ""
-            }`}
+            className={cn(
+              "w-9 h-9 border-none rounded-[7px] bg-transparent text-secondary font-bold text-[13px] cursor-pointer ",
+              page === currentPage && "bg-primary text-white",
+            )}
             aria-current={page === currentPage ? "page" : undefined}
             onClick={() => setCurrentPage(page)}
           >
@@ -35,11 +40,14 @@ const Pagination = () => {
 
       <button
         type="button"
-        className={styles.arrowButton}
         aria-label="다음 페이지"
+        className="cursor-pointer"
         onClick={() => setCurrentPage((page) => Math.min(5, page + 1))}
       >
-        <img src="/icons/chevron-right.svg" alt="다음 페이지" />
+        {/* TODO: 상수 5 교체 */}
+        <ChevronRightIcon
+          className={cn(currentPage === 5 ? "text-disabled" : "text-secondary")}
+        />
       </button>
     </nav>
   );
