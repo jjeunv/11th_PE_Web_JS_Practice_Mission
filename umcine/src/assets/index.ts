@@ -1,0 +1,14 @@
+export { default as ArrowRightIcon } from "./icons/arrow-right.svg";
+export { default as BookmarkOutlineIcon } from "./icons/bookmark-outline.svg";
+export { default as BookmarkIcon } from "./icons/bookmark.svg";
+export { default as ChevronLeftIcon } from "./icons/chevron-left.svg";
+export { default as ChevronRightIcon } from "./icons/chevron-right.svg";
+export { default as CloseIcon } from "./icons/close.svg";
+export { default as EditIcon } from "./icons/edit.svg";
+export { default as LockIcon } from "./icons/lock.svg";
+export { default as MailIcon } from "./icons/mail.svg";
+export { default as MovieIcon } from "./icons/movie.svg";
+export { default as PersonIcon } from "./icons/person.svg";
+export { default as SearchIcon } from "./icons/search.svg";
+export { default as StarOutlineIcon } from "./icons/star-outline.svg";
+export { default as StarIcon } from "./icons/star.svg";
